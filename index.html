@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sukirtha Shree - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #2E3B4E, #6A7B8C, #9AADC2);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+            height: 100vh;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            z-index: 10;
+            position: relative;
+            color: white;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        header h1 {
+            font-size: 4rem;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px #A0C4FF, 0 0 20px #A0C4FF, 0 0 30px #A0C4FF;
+        }
+
+        header p {
+            font-size: 1.6rem;
+            margin-bottom: 30px;
+            color: #ddd;
+            animation: fadeIn 3s ease-out;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid #A0C4FF;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px 5px rgba(160, 196, 255, 0.6);
+            animation: pulse 2s infinite;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            padding: 15px;
+            z-index: 10;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            position: relative;
+            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.4s ease;
+        }
+
+        nav a:hover {
+            color: #A0C4FF;
+            transform: scale(1.1);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background: #A0C4FF;
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .container {
+            padding: 100px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        section {
+            margin-bottom: 100px;
+            position: relative;
+        }
+
+        section h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #fff;
+            text-shadow: 0 0 15px #A0C4FF, 0 0 25px #A0C4FF;
+        }
+
+        .card {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            transform: scale(1);
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .card i {
+            font-size: 4rem;
+            color: #A0C4FF;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 1.2rem;
+            color: #ccc;
+        }
+
+        .projects {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .project-card {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            width: 300px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .project-card img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card img:hover {
+            transform: scale(1.1);
+        }
+
+        .project-card h3 {
+            font-size: 1.8rem;
+            color: #A0C4FF;
+            margin-top: 15px;
+        }
+
+        .project-card p {
+            font-size: 1rem;
+            color: #ccc;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.7);
+            text-align: center;
+            padding: 20px;
+            color: #fff;
+            margin-top: 100px;
+            position: relative;
+        }
+
+        footer p {
+            font-size: 1.2rem;
+            color: #ddd;
+        }
+
+        /* Contact Section */
+        #contact {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px 0;
+        }
+
+        #contact h2 {
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px #A0C4FF, 0 0 20px #A0C4FF;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        form input,
+        form textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: 1px solid #A0C4FF;
+            background-color: transparent;
+            color: #fff;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        form button {
+            padding: 15px 25px;
+            background-color: #A0C4FF;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        form button:hover {
+            background-color: #333;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+       <img src="/Profile pic.jpg" alt="">
+       
+        <h1>HI! This is Sukirtha Shree R</h1>
+        <p>2nd Year ECE Student | Embedded Systems Enthusiast | Full-Stack Developer</p>
+    </header>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#internships">Internship</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+       
+    </nav>
+
+    <div class="container">
+
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="card">
+                <p>I am Sukirtha Shree R, a passionate Electronics and Communication Engineering student. I am fascinated by technology and love solving real-world problems through embedded systems, web development, and machine learning. My skills extend across hardware and software, and I am always eager to explore new areas in tech.</p>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="card">
+                <h3>Bachelor of Engineering</h3>
+                <p>Sri Krishna College of Engineering and Technology, Coimbatore</p>
+                <p>Electronics and Communication Engineering (2023-2027)</p>
+                <p>CGPA: 8.4</p>
+            </div>
+            <div class="card">
+                <h3>Higher Secondary (12th)</h3>
+                <p>Edustar International School</p>
+                <p>Percentage: 88.8%</p>
+            </div>
+            <div class="card">
+                <h3>Secondary (10th)</h3>
+                <p>Edustar International School</p>
+                <p>Percentage: 93.2%</p>
+            </div>
+        </section>
+        
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills">
+                <div class="card">
+                    <i class="fab fa-java"></i>
+                    <h3>Java Programming</h3>
+                    <p>Expert in Object-Oriented Programming concepts and Java-based applications.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-microchip"></i>
+                    <h3>Embedded Systems</h3>
+                    <p>Hands-on experience with microcontrollers like Arduino, ESP32, and Raspberry Pi.</p>
+                </div>
+                <div class="card">
+                    <i class="fab fa-html5"></i>
+                    <h3>Web Development</h3>
+                    <p>Building responsive, dynamic websites using HTML, CSS, JavaScript, and React.js.</p>
+                </div>
+            </div>
+        </section>
+        <section id="internships">
+            <h2>Internships</h2>
+            <div class="card">
+                <h3>IoT Internship</h3>
+                <p>Anna University, Chennai</p>
+                <p>Learned and worked on IoT applications, networking, and cloud integration.</p>
+            </div>
+            <div class="card">
+                <h3>Basics of IoT Internship</h3>
+                <p>Madurai</p>
+                <p>Gained foundational knowledge of IoT devices, sensors, and data communication.</p>
+            </div>
+        </section>
+        
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects">
+                <div class="project-card">
+                   
+                    <h3>Smart Home Automation</h3>
+                    <p>Automated home systems to control appliances remotely using IoT and mobile apps.</p>
+                </div>
+                <div class="project-card">
+                     <h3>People Counting System</h3>
+                    <p>Using IR sensors for crowd management in public spaces.</p>
+                </div>
+                <div class="project-card">
+                
+                    <h3>Smart Lock System</h3>
+                    <p>A security solution using IoT to control door locks remotely.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="4" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Sukirtha Shree. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
